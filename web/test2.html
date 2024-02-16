@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Splatoon Digital Clock</title>
+<style>
+  body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .digital-clock {
+    font-family: 'Arial', sans-serif;
+    font-size: 3em;
+    color: #fff;
+    background-color: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .clock-inner {
+    display: flex;
+  }
+
+  .colon {
+    margin: 0 0.2em;
+  }
+
+  .digit {
+    width: 2em;
+    text-align: center;
+    background-color: #ff5500;
+    border-radius: 5px;
+    margin: 0 0.2em;
+    padding: 0.2em 0;
+  }
+</style>
+</head>
+<body>
+<div class="digital-clock">
+  <div class="clock-inner">
+    <div class="digit" id="hours">00</div>
+    <div class="colon">:</div>
+    <div class="digit" id="minutes">00</div>
+    <div class="colon">:</div>
+    <div class="digit" id="seconds">00</div>
+  </div>
+</div>
+
+<script>
+function updateClock() {
+  var now = new Date();
+  var hours = now.getHours().toString().padStart(2, '0');
+  var minutes = now.getMinutes().toString().padStart(2, '0');
+  var seconds = now.getSeconds().toString().padStart(2, '0');
+
+  document.getElementById('hours').textContent = hours;
+  document.getElementById('minutes').textContent = minutes;
+  document.getElementById('seconds').textContent = seconds;
+}
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+</script>
+</body>

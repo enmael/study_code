@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uptime Clock</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  #uptime-display {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+<div id="uptime-display">00:00:00</div>
+
+<script>
+let uptimeDisplay = document.getElementById('uptime-display');
+let startTime = new Date();
+
+setInterval(function() {
+  let currentTime = new Date();
+  let uptime = new Date(currentTime - startTime);
+
+  let hours = uptime.getUTCHours().toString().padStart(2, '0');
+  let minutes = uptime.getUTCMinutes().toString().padStart(2, '0');
+  let seconds = uptime.getUTCSeconds().toString().padStart(2, '0');
+
+  uptimeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+}, 1000);
+</script>
+</body>
+</html>
