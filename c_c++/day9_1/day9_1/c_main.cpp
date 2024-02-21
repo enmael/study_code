@@ -8,6 +8,7 @@
 - 창을 두개 만든다.?
 - 지우고 보여주고 지우고 보여주고를 반복한다.
 */
+
 #include <stdio.h>
 #include <Windows.h>
 
