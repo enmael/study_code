@@ -185,7 +185,7 @@ void StageRender()
 
 	for (int i = 0; i < 3; i++)
 	{
-		MovePos(enemy->x, enemy->y + i); 
+		MovePos(enemy->x, enemy->y + i);
 		Paint(enemy->color);
 		printf(enemy->shape[i]);
 		MovePos(enemy2->x, enemy2->y + i);
@@ -212,7 +212,7 @@ void MovePos(int x, int y) //카
 	COORD pos;
 	pos.X = x * 2;
 	pos.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos); 
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 	//콘솔창의 출력위치 바꿔주는 함수
 
 }
