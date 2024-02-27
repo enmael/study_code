@@ -1,4 +1,7 @@
 //13일차 강의 내용
+// ui 이 한번 만들어보기
+// 충돌했을때 사라지는것
+/*
 #include <stdio.h>
 #include <Windows.h>
 
@@ -160,4 +163,355 @@ void Stage()
 {
 	MovePos(10, 10);
 	printf("STAGE");
+}
+*/
+/*
+#include <stdio.h>
+#include <Windows.h>
+
+//커서이동 시켜주는 애
+void MovePos(int x, int y)
+{
+	COORD pos;
+	pos.X = x * 2;
+	pos.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+struct Obj
+{
+	int x;
+	int y;
+	const char* shape;
+};
+
+Obj* player = nullptr;
+
+void Init();
+void Play();
+
+
+int main()
+{
+	Init();
+
+	while (true)
+	{
+		system("cls");
+		Play();
+		Sleep(50);
+	}
+
+	return 0;
+}
+
+void Init()
+{
+	player = (Obj*)malloc(sizeof(Obj));
+	player->x = 10;
+	player->y = 10;
+	player->shape = "옷";
+}
+
+void Play()
+{
+	if (GetAsyncKeyState(VK_LEFT))
+	{
+		player->x--;
+	}
+
+	if (GetAsyncKeyState(VK_RIGHT))
+	{
+		player->x++;
+	}
+
+	if (GetAsyncKeyState(VK_UP))
+	{
+		player->y--;
+	}
+
+	if (GetAsyncKeyState(VK_DOWN))
+	{
+		player->y++;
+	}
+
+	MovePos(player->x, player->y);
+	printf(player->shape);
+}
+*/
+/*
+#include <stdio.h>
+#include <Windows.h>
+
+//커서이동 시켜주는 애
+void MovePos(int x, int y)
+{
+	COORD pos;
+	pos.X = x * 2;
+	pos.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+#define BULLET_COUNT 10
+
+struct Obj
+{
+	bool act;
+	int x;
+	int y;
+	const char* shape;
+};
+
+Obj* player = nullptr;
+Obj* bullets[BULLET_COUNT];
+
+void Init();
+void Play();
+
+
+int main()
+{
+	Init();
+
+	while (true)
+	{
+		system("cls");
+		Play();
+		Sleep(50);
+	}
+
+	return 0;
+}
+
+void Init()
+{
+	player = (Obj*)malloc(sizeof(Obj));
+	player->x = 10;
+	player->y = 10;
+	player->shape = "옷";
+
+	for (int i = 0; i < BULLET_COUNT; i++)
+	{
+		bullets[i] = (Obj*)malloc(sizeof(Obj));
+		bullets[i]->act = false;
+		bullets[i]->x = i;
+		bullets[i]->y = 0;
+		bullets[i]->shape = "▶";
+	}
+}
+
+void Play()
+{
+	if (GetAsyncKeyState(VK_LEFT))
+	{
+		player->x--;
+	}
+
+	if (GetAsyncKeyState(VK_RIGHT))
+	{
+		player->x++;
+	}
+
+	if (GetAsyncKeyState(VK_UP))
+	{
+		player->y--;
+	}
+
+	if (GetAsyncKeyState(VK_DOWN))
+	{
+		player->y++;
+	}
+
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		for (int i = 0; i < BULLET_COUNT; i++)
+		{
+			if (bullets[i]->act == false)
+			{
+				bullets[i]->act = true;
+				bullets[i]->x = player->x;
+				bullets[i]->y = player->y;
+				break;
+			}
+
+		}
+
+	}
+
+	MovePos(player->x, player->y);
+	printf(player->shape);
+
+	for (int i = 0; i < BULLET_COUNT; i++)
+	{
+		MovePos(bullets[i]->x, bullets[i]->y);
+		printf(bullets[i]->shape);
+	}
+}
+*/
+
+
+#include <stdio.h>
+#include <Windows.h>
+
+//커서이동 시켜주는 애
+void MovePos(int x, int y)
+{
+	COORD pos;
+	pos.X = x * 2;
+	pos.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+#define BULLET_COUNT 10
+#define ENEMY_COUNT 10
+
+struct Obj
+{
+	bool act;
+	int x;
+	int y;
+	const char* shape;
+};
+
+Obj* player = nullptr;
+Obj* bullets[BULLET_COUNT];
+Obj* enemies[ENEMY_COUNT];
+
+void Init();
+void Play();
+
+
+int main()
+{
+	Init();
+
+	while (true)
+	{
+		system("cls");
+		Play();
+		Sleep(50);
+	}
+
+	return 0;
+}
+
+void Init()
+{
+	player = (Obj*)malloc(sizeof(Obj));
+	player->x = 10;
+	player->y = 10;
+	player->shape = "옷";
+
+	for (int i = 0; i < BULLET_COUNT; i++)
+	{
+		bullets[i] = (Obj*)malloc(sizeof(Obj));
+		bullets[i]->act = false;
+		bullets[i]->x = i;
+		bullets[i]->y = 0;
+		bullets[i]->shape = "▶";
+	}
+
+	for (int i = 0; i < ENEMY_COUNT; i++)
+	{
+		enemies[i] = (Obj*)malloc(sizeof(Obj));
+		enemies[i]->act = false;
+		enemies[i]->x = 0;
+		enemies[i]->y = 0;
+		enemies[i]->shape = "봇";
+	}
+}
+
+void Play()
+{
+	if (GetAsyncKeyState(VK_LEFT))
+	{
+		player->x--;
+	}
+
+	if (GetAsyncKeyState(VK_RIGHT))
+	{
+		player->x++;
+	}
+
+	if (GetAsyncKeyState(VK_UP))
+	{
+		player->y--;
+	}
+
+	if (GetAsyncKeyState(VK_DOWN))
+	{
+		player->y++;
+	}
+
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		for (int i = 0; i < BULLET_COUNT; i++)
+		{
+			if (bullets[i]->act == false)
+			{
+				bullets[i]->act = true;
+				bullets[i]->x = player->x;
+				bullets[i]->y = player->y;
+				break;
+			}
+		}
+	}
+
+	MovePos(player->x, player->y);
+	printf(player->shape);
+
+	for (int i = 0; i < BULLET_COUNT; i++)
+	{
+		if (bullets[i]->act)
+		{
+			bullets[i]->x++;
+			if (bullets[i]->x > 40)
+			{
+				bullets[i]->x = i;
+				bullets[i]->y = 0;
+				bullets[i]->act = false;
+			}
+
+		}
+
+	}
+
+	for (int i = 0; i < BULLET_COUNT; i++)
+	{
+		MovePos(bullets[i]->x, bullets[i]->y);
+		printf(bullets[i]->shape);
+	}
+
+
+	for (int i = 0; i < ENEMY_COUNT; i++)
+	{
+		if (enemies[i]->act == false)
+		{
+			enemies[i]->act = true;
+			enemies[i]->x = 39;
+			enemies[i]->y = rand() % 40;
+			break;
+
+		}
+	}
+
+	for (int i = 0; i < ENEMY_COUNT; i++)
+	{
+		if (enemies[i]->act)
+		{
+			enemies[i]->x--;
+			if (enemies[i]->x <= 0)
+			{
+				enemies[i]->act = false;
+			}
+
+		}
+	}
+
+
+	for (int i = 0; i < ENEMY_COUNT; i++)
+	{
+		MovePos(enemies[i]->x, enemies[i]->y);
+		printf(enemies[i]->shape);
+	}
 }
