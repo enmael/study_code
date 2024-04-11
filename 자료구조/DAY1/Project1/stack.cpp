@@ -1,42 +1,86 @@
 #include "Stack.h"
 
-void Stack::Clear()//처리
+void Stack::Clear()
+
 {
+
     for (int i = 0; i < count; i++)
     {
         data[i] = 0;
-        cout << "data에는"<<i <<"번째에는"<< data[i] << endl;
     }
-
 }
 
-int Stack::Count() // 처리
+int Stack::Count() 
 {
     count = sizeof(data) / sizeof(*data);
     return count;
 }
 
-bool Stack::IsEmpty() //비어 있는지 아닌지 알려주는 함수
+bool Stack::IsEmpty() 
 {
-    return false;
-}
-
-bool Stack::Push(int _data) //값을 넣어주는 함수
-{
+    /*
+    for (int i = 0; i < count; i++)
+    {
+        cout << i<<" 번째 값 :" << data[i] << endl;
+    }
+    */
     for (int i = 0; i < count; i++)
     {
         if (data[i] == 0)
         {
-            data[i] = _data;
+            return true;
         }
+        else
+        {
+            return false;
+        }
+       
     }
 }
 
-int Stack::Pop()
+bool Stack::Push(int _data) 
 {
-    return 0;
+    int s = 0;
+    int a = 0;
+    for (int i = 0; i < count; i++)
+    {
+        if (data[i] == 0)
+        {
+            a++;
+          
+        }
+
+    }
+    data[count - a + 1] = _data;
+    s = data[count - a+1];
+    return s;
+}
+
+int Stack::Pop(int a) 
+{
+
+    int s = 0;
+    
+    for (int i = 0; i < count; i++)
+    {
+        if (a == data[i])
+        {
+            data[i] = 0;
+            s = data[i];
+        }
+
+    }
+    return s;
 }
 
 Stack::Stack()
 {
+}
+
+void Stack::Line()
+{
+    for (int i = 0; i < count; i++)
+    {
+        cout << i << " 번째 값 :" << data[i] << endl;
+    }
 }

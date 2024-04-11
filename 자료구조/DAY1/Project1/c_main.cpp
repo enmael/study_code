@@ -7,10 +7,44 @@ int main()
 {
 	Stack stack;
 	int num;
-	num = stack.Count(); // 0
+	int num2;
+	int num3;
+	//몇개 남았는지 검색함
+
+	num = stack.Count(); // 
 	cout << "stack에" << num << "개가 남았습니다." << endl;
+	stack.Line();
+	//특정 값을 지워버림
+	int a;
+	a = 3;
+	num2 = stack.Pop(a);
+	cout << "stack.Pop 지워버림"<<endl;
+	stack.Line();
+	//값을 넣음
+	int b = 4;
+	num3 = stack.Push(b);
+	cout << "stack.Push 로값을 넣음" << endl;
+	stack.Line();
+	//전체를 지워버림
+	stack.Clear();
 	cout << "stack를stack.Clear()로 지움" << endl;
-	stack.Clear(22);
+	stack.Line();
+	//비어 있는지 아닌지 확인
+	cout << "stack를IsEmpty로 값이 있는지 없는지 확인" << endl;
+	bool n;
+	n =stack.IsEmpty();
+	if (n == 1)
+	{
+		cout << "stack를IsEmpty()확인" << "true" << endl;
+	}
+	else 
+	{
+		cout << "stack를IsEmpty()확인" << "false" << endl;
+	}
+	stack.Line();
+
+
+
 
 
 

@@ -7,7 +7,7 @@ using namespace std;
 class Stack
 {
 private:
-	int data[MaxCount] = {}; // data:[0][0][0][0][0]
+	int data[MaxCount] = {0,2,1,3,0}; // data:[0][0][0][0][0]
 	int count = 0;			 // count: 0  data:[21][3][40][0][0] ->	 3
 public:
 	//자료를 지워주는 함수
@@ -25,10 +25,15 @@ public:
 	//값을 빼주는 함수
 	//호출 한번 할때마다 반환이 되야함.
 	//Pop할것이 없음 NULL 반환
-	int Pop(); //[11][22][0][0][0]->[11][0][0][0][0]->return 22;
+	int Pop(int a); //[11][22][0][0][0]->[11][0][0][0][0]->return 22;
+
+	void Line();
 
 public:
 	//생성자
 	Stack();
 
+
+
 };
+
