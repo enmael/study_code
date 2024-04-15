@@ -23,7 +23,7 @@ public:
 	//값을 넣어주는(int num) 
 	void Enqueue(int _data);
 	//값을 빼주는 아이
-	int Dequeue();
+	int Dequeue(); //o
 public:
 	Queue();
 	~Queue();

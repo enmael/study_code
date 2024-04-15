@@ -45,9 +45,8 @@ int main()
 		if (data[i] == 0 && data[i-1] != 0)
 		{
 			data[i] = _data;
-
+			break;
 		}
-
 	}
 
 
