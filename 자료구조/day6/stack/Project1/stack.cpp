@@ -89,6 +89,7 @@ int Stack::Pop()
             }
         }
     }
+    return true;
 }
 
 Stack::Stack()
