@@ -67,6 +67,7 @@ bool Stack::Push(int _data)
             
         }
     }
+    return true;
 }
 
 int Stack::Pop()
