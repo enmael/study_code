@@ -79,10 +79,6 @@ int Stack::Pop(int a)
     return a;
 }
 
-Stack::Stack()
-{
-}
-
 void Stack::Line()
 {
     for (int i = 0; i < count; i++)
@@ -90,3 +86,8 @@ void Stack::Line()
         cout << i << " ¹øÂ° °ª :" << data[i] << endl;
     }
 }
+
+Stack::Stack()
+{
+}
+
