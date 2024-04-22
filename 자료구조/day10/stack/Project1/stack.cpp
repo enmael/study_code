@@ -16,55 +16,58 @@ int Stack::Count()
 	return count;
 }
 
-bool Stack::IsEmpty() //애가 그러니까 비어있는지 아닌지 확인하고 그 비어 있으면 투르 값을 PUSH 한태 보낸다?
+bool Stack::IsEmpty() 
 {
+    int a = 0;
     for (int i = 0; i < MaxCount; i++)
     {
-        int a = 0;
         if (data[i] == -99)
         {
             a = a + 1;
         }
-        else
+        else if (data[i] > -99)
         {
             a = a - 1;
         }
-
-        if (a == MaxCount)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    }
+    if (a == MaxCount)
+    {
+        return true;
+        
+    }
+    else
+    {
+        return false;
     }
 }
 
 bool Stack::Push(int _data)
 {
+
     if (IsEmpty() == true)
     {
-        //int* data = new int[count];
         data[0] = _data;
-        
     }
-    else
+    else if (IsEmpty() == false)
     {
-        int* temp = new int[count];
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < MaxCount; i++)
         {
-            if (i <= count)
+            if (data[i] > -99)
             {
-                temp[i] = data[i];
+                arr[i] = data[i];
             }
-            else if (i == count)
+            else if (data[i] == -99 && data[i - 1] > -99)
             {
-                delete data;
-                temp[i + 1] = _data;
-               
+                arr[i] = _data;
             }
-            
+        }
+    }
+
+    for (int i = 0; i < MaxCount; i++)
+    {
+        if (arr[i] > -99)
+        {
+            data[i] = arr[i];
         }
     }
     return true;
@@ -72,28 +75,39 @@ bool Stack::Push(int _data)
 
 int Stack::Pop()
 {
-    if (IsEmpty() == false)
+    if (IsEmpty() == true)
     {
-        data[count] = -99;
-        int* temp = new int[count];
-        for (int i = 0; i < count; i++)
+        return NULL;
+    }
+    else
+    {
+        for (int i = 0; i < MaxCount; i++)
         {
-
-            if (i < count)
+            if (data[i] == -99)
             {
-                temp[i] = data[i];
+                data[i - 1] = -99;
+                break;
             }
-            else if (i == count)
-            {
-                delete data;
-            }
+            
         }
     }
+
     return true;
+}
+
+void Stack::Line()
+{
+    cout << "##################" << endl;
+    for (int i = 0; i <MaxCount; i++)
+    {
+        cout << i << " 번째 값 :" << data[i] << endl;
+    }
+    cout << "##################" << endl;
 }
 
 Stack::Stack()
 {
     Clear();
 }
+
 
