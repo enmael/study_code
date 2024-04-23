@@ -7,7 +7,6 @@ class Queue
 public:
 	//Queue를 가르키는 포인터
 	int* data;
-	int* arr;
 private:
 	//데이터 갯수
 	int count;

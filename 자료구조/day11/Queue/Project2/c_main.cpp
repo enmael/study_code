@@ -20,5 +20,11 @@ int main()
 	a.Enqueue(21);
 	num = a.Count();
 	cout << num << endl;
-	//a.Line();
+	a.Line();
+	a.Enqueue(22);
+	a.Line();
+	a.Dequeue();
+	a.Line();
+	a.Dequeue();
+	a.Line();
 }
