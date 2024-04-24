@@ -31,10 +31,11 @@ bool Queue::IsEmpty()
 void Queue::Enqueue(int _data)
 {
 	int* newData = new int[count + 1];
-	for (int i = 0; i < count; ++i) {
-		newData[i] = data[i];
+	newData[0] = _data;
+	for (int i = 0; i < count; i++) 
+	{
+		newData[i+1] = data[i];
 	}
-	newData[count] = _data;
 	delete data;
 	data = newData;
 	count++;
@@ -42,19 +43,22 @@ void Queue::Enqueue(int _data)
 
 int Queue::Dequeue()
 {
-	if (IsEmpty()) {
-		return -1;
-	}
-	int dequeuedValue = data[0];
-	int* newData = new int[count - 1];
-	for (int i = 1; i < count; ++i)
+	if (IsEmpty() == true)
 	{
-		newData[i - 1] = data[i];
+		return NULL;
 	}
-	delete data;
-	data = newData;
-	count--;
-	return dequeuedValue;
+	else
+	{
+		int* newData = new int[count - 1];
+		for (int i = 1; i < count; i++)
+		{
+			newData[i - 1] = data[i];
+		}
+
+		delete data;
+		data = newData;
+		count--;
+	}
 }
 
 void Queue::Line()

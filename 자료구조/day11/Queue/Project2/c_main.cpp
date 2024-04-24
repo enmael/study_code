@@ -27,4 +27,6 @@ int main()
 	a.Line();
 	a.Dequeue();
 	a.Line();
+	a.Dequeue();
+	a.Line();
 }

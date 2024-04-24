@@ -30,4 +30,3 @@ public:
 	Deque();
 	~Deque();
 };
-​

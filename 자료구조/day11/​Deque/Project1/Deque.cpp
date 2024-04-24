@@ -1,5 +1,5 @@
 #include "Deque.h"
-void Deque::Push_Back(int num) //이건 스텍으로 처리
+void Deque::Push_Back(int num) 
 {
 	if (IsEmpty() == true)
 	{
@@ -9,14 +9,16 @@ void Deque::Push_Back(int num) //이건 스텍으로 처리
 	}
 	else
 	{
+		//이건 스텍으로 처리
+		int* newData = new int[count + 1];
 		for (int i = 0; i < count; i++)
 		{
-			if (data[i] = NULL)
-			{
-				data[i] = num;
-				count++;
-			}
+			newData[i] = data[i];
 		}
+		newData[count] = num;
+		delete data;
+		data = newData;
+		count++;
 	}
 }
 void Deque::Push_Front(int num) 
@@ -30,11 +32,11 @@ void Deque::Push_Front(int num)
 	else
 	{
 		int* newData = new int[count + 1];
-		for (int i = 0; i < count; ++i)
+		newData[0] = num;
+		for (int i = 0; i < count; i++)
 		{
-			newData[i] = data[i];
+			newData[i+1] = data[i];
 		}
-		newData[count] = num;
 		delete data;
 		data = newData;
 		count++;
@@ -48,7 +50,14 @@ int Deque::Pop_Back()
 	}
 	else
 	{
-
+		int* newData = new int[count - 1];
+		for (int i = 0; i < count-1; i++)
+		{
+			newData[i] = data[i];
+		}
+		delete data;
+		data = newData;
+		count--;
 	}
 }
 int Deque::Pop_Front()
@@ -59,7 +68,14 @@ int Deque::Pop_Front()
 	}
 	else
 	{
-
+		int* newData = new int[count - 1];
+		for (int i = 1; i < count; i++)
+		{
+			newData[i-1] = data[i];
+		}
+		delete data;
+		data = newData;
+		count--;
 	}
 }
 bool Deque::IsEmpty()
