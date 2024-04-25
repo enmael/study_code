@@ -115,9 +115,9 @@ void Deque::PrintAll()
 }
 Deque::Deque()
 {
-
+	Clear();
 }
 Deque::~Deque()
 {
-
+	Clear();
 }
