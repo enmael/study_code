@@ -420,6 +420,7 @@ int main()
 }
 */
 
+/*
 #include <iostream>
 
 using namespace std;
@@ -449,3 +450,206 @@ int main()
 	return 0;
 
 }
+*/
+/*
+#include <iostream>
+
+using namespace std;
+#include <set> // 호출
+int main()
+{
+	cout << "========================" << endl;
+	set<string> numbers;
+	numbers.insert("Num1");
+	numbers.insert("Num2");
+	numbers.insert("Num3");
+	numbers.insert("Num4");
+
+
+	for (auto num : numbers)
+	{
+		cout << "value : " << num << endl;
+	}
+
+	cout << "========================" << endl;
+
+
+	//중복 안됨
+	auto success = numbers.insert("Num30");
+	if (success.second)
+	{
+		cout << *success.first << "삽입 성공" << endl;
+	}
+	else
+	{
+		cout << *success.first << "삽입 실패" << endl;
+	}
+
+	return 0;
+
+}
+*/
+/*
+#include <iostream>
+
+using namespace std;
+
+#include <set> // 호출
+
+int main()
+{
+	cout << "========================" << endl;
+	set<string> numbers;
+	numbers.insert("Num1");
+	numbers.insert("Num2");
+	numbers.insert("Num3");
+	numbers.insert("Num4");
+
+
+	for (auto num : numbers)
+	{
+		cout << "value : " << num << endl;
+	}
+
+	cout << "========================" << endl;
+
+	cout << "현재 num10? " << numbers.count("Num10") << endl; //값이 있으면 1 없으면 0 이다 이거지애 
+	cout << "현재 num3? " << numbers.count("Num3") << endl;
+
+	cout << "========================" << endl;
+
+	cout << "Size : " << numbers.size() << endl;
+
+
+
+	return 0;
+
+}
+*/
+
+//????이건 도대체 모하는 
+/*
+#include <iostream>
+using namespace std;
+#include <set> // 호출
+int main()
+{
+	cout << "========================" << endl;
+	set<string> numbers;
+	numbers.insert("Num1");
+	numbers.insert("Num2");
+	numbers.insert("Num3");
+	numbers.insert("Num4");
+
+
+	for (auto num : numbers)
+	{
+		cout << "value : " << num << endl;
+	}
+
+	cout << "========================" << endl;
+
+	if (numbers.find("Num1") == numbers.end())
+	{
+		cout << "값이 없음" << endl;
+	}
+	else
+	{
+		cout << "값이 있음" << endl;
+		numbers.erase("Num1");
+	}
+	cout << "========================" << endl;
+
+	for (auto num : numbers)
+	{
+		cout << "value : " << num << endl;
+	}
+
+	return 0;
+
+}
+*/
+
+//stack
+/*
+#include <iostream>
+
+using namespace std;
+
+#include <stack>
+#include <queue>
+#include <deque>
+
+int main()
+{
+	cout << "========================" << endl;
+	stack<int> numbers;
+	numbers.push(1);
+	numbers.push(2);
+	numbers.push(3);
+	numbers.push(4);
+
+	for (int i = 0; i < 4; i++)
+	{
+		cout << numbers.top() << endl;
+		numbers.pop();
+	}
+
+	cout << "========================" << endl;
+
+	cout << "Size " << numbers.size() << endl;
+
+	if (numbers.empty())
+	{
+		cout << "비어 있음" << endl;
+	}
+	else
+	{
+		cout << "값이 있음" << endl;
+	}
+
+
+	return 0;
+
+}
+*/
+/*
+#include <iostream>
+using namespace std;
+#include <stack>
+#include <queue>
+#include <deque>
+
+int main()
+{
+	cout << "========================" << endl;
+	queue<int> numbers;
+	numbers.push(1);
+	numbers.push(2);
+	numbers.push(3);
+	numbers.push(4);
+
+	for (int i = 0; i < 4; i++)
+	{
+		cout << numbers.front() << endl;
+		numbers.pop();
+	}
+
+	cout << "========================" << endl;
+
+	cout << "Size " << numbers.size() << endl;
+
+	if (numbers.empty())
+	{
+		cout << "비어 있음" << endl;
+	}
+	else
+	{
+		cout << "값이 있음" << endl;
+	}
+
+
+	return 0;
+
+}
+*/
