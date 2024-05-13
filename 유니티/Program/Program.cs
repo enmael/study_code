@@ -62,7 +62,6 @@ namespace Program // Note: actual namespace depends on the project name.
             // 구조체 사용해서 학생 프로그램 만들기
             // 동적할당 가지고 크기 늘어났다 줄어드는 학생 프로그램 만들기 
             // 클래스 사용햐소 학생 프로그램 만들기
-
         }
     }
 }
